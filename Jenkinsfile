@@ -29,8 +29,17 @@ pipeline {
             }
         }
 	stage('Push image to Nexus') {
-        sh 'docker login -u admin -p admin http://13.232.247.176:8081/repository/argocd-image-helm/'
-            app.push("${env.BUILD_NUMBER}")
+			steps{
+				script{
+					sh 'docker login -u admin -p admin http://13.232.247.176:8081/repository/argocd-image-helm/'
+					app.push("${env.BUILD_NUMBER}")
+				
+				}
+			
+			}
+	
+	
+        
     }
 	stage('Deploy') {
             steps {
@@ -38,18 +47,11 @@ pipeline {
                         docker.withRegistry('https://720766170633.dkr.ecr.us-east-2.amazonaws.com', 'ecr:us-east-2:aws-credentials') {
                     app.push("${env.BUILD_NUMBER}")
                     app.push("latest")
-                    }
-					
-					
-					
-					
-					
-					
-                }
+					}
+				}
             }
 	}  
   
   }
-
 
 }
