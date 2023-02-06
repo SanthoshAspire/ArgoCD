@@ -28,6 +28,10 @@ pipeline {
                  echo 'Empty'
             }
         }
+	  stage('Push image to Nexus') {
+        sh 'docker login -u admin -p admin http://13.232.247.176:8081/repository/argocd-image-helm/'
+            app.push("${env.BUILD_NUMBER}")
+    }
 	
   }
   
