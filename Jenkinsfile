@@ -9,7 +9,7 @@ node {
 
     stage('Build Docker image') {
   
-       app = docker.build("13.232.247.176:8081/argocd-image-helm/devopsodiahelm:${env.BUILD_NUMBER}")
+       app = docker.build("13.232.247.176:8081/argocd-image-helm/:${env.BUILD_NUMBER}")
     }
 
     stage('Test Docker image') {
@@ -21,7 +21,7 @@ node {
     }
 
     stage('Push image to Nexus') {
-        sh 'docker login -u admin -p admin http://192.168.56.120:9092/repository/argocd-image-helm/'
+        sh 'docker login -u admin -p admin http://13.232.247.176:8081/repository/argocd-image-helm/'
             app.push("${env.BUILD_NUMBER}")
     }
     stage('Publish  Helm') {
