@@ -25,11 +25,11 @@ pipeline {
 	
 	
 	
-            #steps { 
-            #    script{
-            #     app = docker.build("registry:${env.BUILD_NUMBER}")
-            #    }
-            #}
+            //steps { 
+            //    script{
+            //     app = docker.build("registry:${env.BUILD_NUMBER}")
+            //   }
+            //}
         }
 		
 	stage('Test'){
