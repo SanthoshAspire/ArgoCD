@@ -37,8 +37,8 @@ pipeline {
 					sh "echo printing the tagged images"
 					sh "sudo docker images"
 					//(working)sh "docker push 52.66.41.87:8081/repository/argocd-image-helm/sanosh9183/testing:${env.BUILD_NUMBER}"
-					sh "docker login -u admin -p admin http://52.66.41.87:8081/repository/argocd-image-helm/"
-					sh "docker push http://52.66.41.87:8081/repository/argocd-image-helm/52.66.41.87:8081/repository/argocd-image-helm/sanosh9183/testing:${env.BUILD_NUMBER}"
+					sh "docker login -u admin -p admin http://52.66.41.87:8081"
+					sh "docker push docker push 52.66.41.87:8081/repository/argocd-image-helm/sanosh9183/testing:${env.BUILD_NUMBER}"
 				}
       	
       }
