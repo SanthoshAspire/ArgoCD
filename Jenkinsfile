@@ -36,50 +36,46 @@ pipeline {
                  echo 'Empty'
             }
         }
-	stage('Login-Into-Docker') {
-      steps {
-		 script{
-				sh "logging into docker"
+	//stage('Login-Into-Docker') {
+      //steps {
+		// script{
+				//sh "logging into docker"
 				//sh "sudo docker login -u sanosh9183 -p Kiran@9183"
 				//sh "logged in successfully"
-				 sh "sudo chmod 777 /var/run/docker.sock"
-			 	sh "permission enabled"
-				sh "sudo docker login -u sanosh9183 -p Kiran@9183"
+				 //sh "sudo chmod 777 /var/run/docker.sock"
+			 	//sh "permission enabled"
+				//sh "sudo docker login -u sanosh9183 -p Kiran@9183"
 			 	//sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 				//sh "echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"              		
-				echo "Login Completed"
+			//	echo "Login Completed"
 				
 		 
-		 }
+		// }
 		
 	  
         //container('docker') {
 	    //  sh "sudo docker login -u sanosh9183 -p Kiran@9183"
 		//sh "logged in successfully"
      // }
-    }
-    }	
+    //}
+    //}	
 	
-	   stage('Push-Images-Docker-to-DockerHub') {
-      steps {
-        container('docker') {
-          sh "sudo docker push sanosh9183/testing-image:${env.BUILD_NUMBER}"
-      }
-    }
-     }
+	  // stage('Push-Images-Docker-to-DockerHub') {
+     // steps {
+       // container('docker') {
+       //   sh "sudo docker push sanosh9183/testing-image:${env.BUILD_NUMBER}"
+     // }
+   // }
+ //    }
 	stage('Push image to Nexus') {
 			steps{
 				script{
 					sh 'sudo docker login -u admin -p admin http://13.232.247.176:8081/repository/argocd-image-helm/'
-					app.push("${env.BUILD_NUMBER}")
-				
+					//app.push("${env.BUILD_NUMBER}")
+					sh "sudo docker push sanosh9183/testing-image:${env.BUILD_NUMBER}"
 				}
-			
 			}
-	
-	
-        
-    }
+	    }
 	stage('Deploy') {
             steps {
                 script{
