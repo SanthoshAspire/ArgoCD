@@ -32,6 +32,12 @@ pipeline {
             //   }
             //}
         }
+	  
+	  stage('Test'){
+            steps {
+                 echo 'Empty'
+            }
+        }
 	stage('Login-Into-Docker') {
       steps {
         container('docker') {
@@ -39,11 +45,7 @@ pipeline {
       }
     }
     }	
-	stage('Test'){
-            steps {
-                 echo 'Empty'
-            }
-        }
+	
 	   stage('Push-Images-Docker-to-DockerHub') {
       steps {
         container('docker') {
