@@ -26,6 +26,7 @@ pipeline {
 				script{
 					//sh "cd /home/ubuntu/Demo/Argo_Project"
 					sh "sudo docker build -t sanosh9183/testing:${env.BUILD_NUMBER} ."
+					sh "sudo docker build -t 13.232.247.176:8081/argocd-image-helm/:${env.BUILD_NUMBER} ."
 				}
       	
       }
