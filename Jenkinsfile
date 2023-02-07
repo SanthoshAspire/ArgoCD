@@ -41,7 +41,7 @@ pipeline {
 	stage('Login-Into-Docker') {
       steps {
         container('docker') {
-          sh 'docker login -u sanosh9183 -p Kiran@9183'
+          sh 'sudo docker login -u sanosh9183 -p Kiran@9183'
       }
     }
     }	
@@ -49,14 +49,14 @@ pipeline {
 	   stage('Push-Images-Docker-to-DockerHub') {
       steps {
         container('docker') {
-          sh 'docker push sanosh9183/testing-image:${env.BUILD_NUMBER}'
+          sh 'sudo docker push sanosh9183/testing-image:${env.BUILD_NUMBER}'
       }
     }
      }
 	stage('Push image to Nexus') {
 			steps{
 				script{
-					sh 'docker login -u admin -p admin http://13.232.247.176:8081/repository/argocd-image-helm/'
+					sh 'sudo docker login -u admin -p admin http://13.232.247.176:8081/repository/argocd-image-helm/'
 					app.push("${env.BUILD_NUMBER}")
 				
 				}
