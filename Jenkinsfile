@@ -24,10 +24,7 @@ pipeline {
 				}
       	
       }
-	
-	
-	
-            //steps { 
+	    //steps { 
             //    script{
             //     app = docker.build("registry:${env.BUILD_NUMBER}")
             //   }
@@ -46,9 +43,8 @@ pipeline {
 				//sh "sudo docker login -u sanosh9183 -p Kiran@9183"
 				//sh "logged in successfully"
 				//sh "docker login -u sanosh9183"
-				
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
-				echo 'Login Completed'  
+				sh "echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"              		
+				echo "Login Completed"
 				
 		 
 		 }
