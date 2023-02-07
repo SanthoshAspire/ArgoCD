@@ -18,7 +18,7 @@ pipeline {
 	stage('Build') { 
 			steps {
 				script{
-					sh 'sudo docker build -t sanosh9183/testing::${env.BUILD_NUMBER}'
+					sh 'sudo docker build -t sanosh9183/testing:${env.BUILD_NUMBER}'
 				}
       	
       }
