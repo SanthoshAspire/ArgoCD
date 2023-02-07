@@ -41,7 +41,8 @@ pipeline {
 	stage('Login-Into-Docker') {
       steps {
         container('docker') {
-          sh 'sudo docker login -u sanosh9183 -p Kiran@9183'
+          sh "sudo docker login -u sanosh9183 -p Kiran@9183"
+	  sh "logged in successfully"
       }
     }
     }	
@@ -49,7 +50,7 @@ pipeline {
 	   stage('Push-Images-Docker-to-DockerHub') {
       steps {
         container('docker') {
-          sh 'sudo docker push sanosh9183/testing-image:${env.BUILD_NUMBER}'
+          sh "sudo docker push sanosh9183/testing-image:${env.BUILD_NUMBER}"
       }
     }
      }
