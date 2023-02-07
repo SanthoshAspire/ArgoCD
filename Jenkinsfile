@@ -42,7 +42,8 @@ pipeline {
 				sh "logging into docker"
 				//sh "sudo docker login -u sanosh9183 -p Kiran@9183"
 				//sh "logged in successfully"
-				sh "sudo docker login -u sanosh9183 -p Kiran@9183"
+				//sh "sudo docker login -u sanosh9183 -p Kiran@9183"
+			 	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 				//sh "echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"              		
 				echo "Login Completed"
 				
