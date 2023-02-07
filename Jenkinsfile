@@ -16,12 +16,20 @@ pipeline {
         }
 	
 	stage('Build') { 
-            steps { 
-                script{
-		   app = docker.build("registry:${env.BUILD_NUMBER}")
-                 //app = docker.build("underwater:${env.BUILD_NUMBER}")
-                }
-            }
+			steps {
+				script{
+					sh 'docker build -t sanosh9183/testing:latest .'
+				}
+      	
+      }
+	
+	
+	
+            #steps { 
+            #    script{
+            #     app = docker.build("registry:${env.BUILD_NUMBER}")
+            #    }
+            #}
         }
 		
 	stage('Test'){
@@ -32,7 +40,7 @@ pipeline {
 	stage('Push image to Nexus') {
 			steps{
 				script{
-					sh 'docker login -u admin -p admin 52.66.41.87:8081/repository/argocd-image-helm/'
+					sh 'docker login -u admin -p admin http://13.232.247.176:8081/repository/argocd-image-helm/'
 					app.push("${env.BUILD_NUMBER}")
 				
 				}
