@@ -40,10 +40,18 @@ pipeline {
         }
 	stage('Login-Into-Docker') {
       steps {
-        container('docker') {
-          sh "sudo docker login -u sanosh9183 -p Kiran@9183"
-	  sh "logged in successfully"
-      }
+		 script{
+				sh "logging into docker"
+				sh "sudo docker login -u sanosh9183 -p Kiran@9183"
+				sh "logged in successfully"
+		 
+		 }
+		
+	  
+        //container('docker') {
+	    //  sh "sudo docker login -u sanosh9183 -p Kiran@9183"
+	    //sh "logged in successfully"
+	    //}
     }
     }	
 	
