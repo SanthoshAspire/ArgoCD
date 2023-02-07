@@ -14,7 +14,13 @@ pipeline {
                 }
             }
         }
-	
+	stage('Login-Into-Docker') {
+      steps {
+        container('docker') {
+          sh 'docker login -u sanosh9183 -p Kiran@9183'
+      }
+    }
+    }
 	stage('Build') { 
 			steps {
 				script{
