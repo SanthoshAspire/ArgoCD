@@ -78,10 +78,10 @@ pipeline {
 	stage('Push image to Nexus') {
 			steps{
 				script{
-					sh "docker login -u admin -p admin http://13.232.247.176:9001/repository/argocd-image-helm/"
-					sh "sudo docker push 13.232.247.176:9001/repository/argocd-image-helm/"
+					sh "docker login -u admin -p admin http://52.66.41.87:9001/repository/argocd-image-helm/"
+					sh "sudo docker push 52.66.41.87:9001/repository/argocd-image-helm/"
 					//app.push("${env.BUILD_NUMBER}")
-					sh "sudo docker push sanosh9183/testing-image:${env.BUILD_NUMBER}"
+					//sh "sudo docker push sanosh9183/testing-image:${env.BUILD_NUMBER}"
 					
 				}
 			
