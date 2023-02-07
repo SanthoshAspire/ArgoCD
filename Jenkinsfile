@@ -18,7 +18,7 @@ pipeline {
 	stage('Build') { 
 			steps {
 				script{
-					sh "cd /home/ubuntu/Demo/Argo_Project"
+					//sh "cd /home/ubuntu/Demo/Argo_Project"
 					sh "sudo docker build -t sanosh9183/testing:${env.BUILD_NUMBER} ."
 				}
       	
