@@ -2,7 +2,12 @@ pipeline {
 	environment {
     registry = "sanosh9183/testing"
     registryCredential = 'dockerhub'     
-    DOCKERHUB_CREDENTIALS= credentials('dockerhubcredentials')     
+    DOCKERHUB_CREDENTIALS= credentials('dockerhubcredentials')  
+	NEXUS_VERSION = "nexus3"
+    NEXUS_PROTOCOL = "http"
+    NEXUS_URL = "13.232.247.176:8081"
+    NEXUS_REPOSITORY = "argocd-image-helm"
+    NEXUS_CREDENTIAL_ID = "Nexus_Cred"
   }
   
   agent any
@@ -70,12 +75,17 @@ pipeline {
 	stage('Push image to Nexus') {
 			steps{
 				script{
-					sh 'sudo docker login -u admin -p admin http://13.232.247.176:8081/repository/argocd-image-helm/'
+					sh 'sudo docker push -u admin -p admin http://13.232.247.176:8081/repository/argocd-image-helm/'
 					//app.push("${env.BUILD_NUMBER}")
 					sh "sudo docker push sanosh9183/testing-image:${env.BUILD_NUMBER}"
+					
 				}
+			
 			}
-	    }
+	
+	
+        
+    }
 	stage('Deploy') {
             steps {
                 script{
